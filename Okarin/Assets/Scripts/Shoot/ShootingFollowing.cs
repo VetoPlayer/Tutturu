@@ -3,19 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class Shooting : MonoBehaviour {
+public class ShootingFollowing : MonoBehaviour {
 
-	public float m_speed = 1f;
-
-	private Vector3 direction;
+	public float m_speed = 0.1f;
 
 	private Transform tr;
 
 	void OnEnable(){
 		tr = this.GetComponent<Transform> ();
-		direction = new Vector3 (CrossPlatformInputManager.GetAxis ("Horizontal") > 0 ? 1 :0,
-			CrossPlatformInputManager.GetAxis ("Vertical") > 0 ? 1 : 0, 0);
-		Debug.Log (direction);
 		StartCoroutine (Wait());
 	}
 
@@ -28,6 +23,7 @@ public class Shooting : MonoBehaviour {
 
 	// Update is called once per frame
 	void FixedUpdate () {
-		tr.position = tr.position + direction * m_speed * Time.fixedDeltaTime ;
+		tr.position = tr.position + new Vector3 (CrossPlatformInputManager.GetAxis("Horizontal"),
+			CrossPlatformInputManager.GetAxis("Vertical"),0) * m_speed * Time.fixedDeltaTime ;
 	}
 }
