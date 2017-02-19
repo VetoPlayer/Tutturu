@@ -15,7 +15,7 @@ public class Shooting : MonoBehaviour {
 		tr = this.GetComponent<Transform> ();
 		direction = new Vector3 (CrossPlatformInputManager.GetAxis ("Horizontal") > 0 ? 1 :0,
 			CrossPlatformInputManager.GetAxis ("Vertical") > 0 ? 1 : 0, 0);
-		Debug.Log (direction);
+//		Debug.Log (direction);
 		StartCoroutine (Wait());
 	}
 
