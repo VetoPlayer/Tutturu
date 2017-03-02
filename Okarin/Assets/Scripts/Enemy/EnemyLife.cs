@@ -9,9 +9,6 @@ public class EnemyLife : MonoBehaviour {
 
 	public int life = 100;
 
-	[Header("Damage per shoot received")]
-
-	public int damage = 1;
 
 	// Use this for initialization
 	void Start () {
@@ -19,6 +16,11 @@ public class EnemyLife : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
-		life = life - damage;
+		if (other.gameObject.tag == "Shoot") {
+			Debug.Log ("Enemy Hit!!!");
+			other.gameObject.SetActive (false);
+			life = life--;
+		}
+
 	}
 }

@@ -6,7 +6,7 @@ public class Poison : MonoBehaviour {
 
 
 	[Header("Speed")]
-	public float m_speed= 4f;
+	public float m_speed= 1f;
 
 	private Transform tr;
 
@@ -22,8 +22,6 @@ public class Poison : MonoBehaviour {
 	void FixedUpdate() {
 		
 		direction = (GameObject.FindWithTag("Player").transform.position - tr.position).normalized;
-
-		Debug.DrawRay (Vector3.zero, tr.position, Color.red, 100f, false);
-		//tr.position = tr.position + Time.fixedTime * m_speed * direction;
+		tr.position = tr.position + Time.fixedDeltaTime * m_speed * direction;
 	}
 }
